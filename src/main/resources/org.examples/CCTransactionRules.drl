@@ -1,0 +1,12 @@
+package org.examples;
+
+import org.examples.AllowedCountry;
+import org.examples.CCTransaction;
+
+rule "AllowTransaction"
+when
+	t : CCTransaction()
+	c: AllowedCountry(ccNumber == t.getCcNumber(), country == t.getCountry)
+then
+    modify( t ) { setStatus( 'accepted' ) }
+end
