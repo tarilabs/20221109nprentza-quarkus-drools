@@ -15,7 +15,6 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>2.13.3.Final</quarkus.platform.version>
     <drools-version>8.29.0.FINAL</drools-version>
-    <junit-version>4.13.1</junit-version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
@@ -71,25 +70,11 @@
      <version>3.23.1</version>
      <scope>test</scope>
    </dependency>
-    <!-- this is used implicitly by quarkus tests so let's make Maven aware of it -->
-    <dependency>
-      <groupId>org.drools</groupId>
-      <artifactId>drools-drl-quarkus-deployment</artifactId>
-      <version>${drools-version}</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
 
     <!-- for testing -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit-version}</version>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -129,8 +114,8 @@
           <execution>
             <goals>
               <goal>build</goal>
-              <!--<goal>generate-code</goal>
-              <goal>generate-code-tests</goal>-->
+              <goal>generate-code</goal>
+              <goal>generate-code-tests</goal>
             </goals>
           </execution>
         </executions>
